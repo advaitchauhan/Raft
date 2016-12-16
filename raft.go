@@ -10,9 +10,9 @@ import (
 	"math/rand"
 )
 const (
-	LEADER = iota
-	CANDIDATE
-	FOLLOWER
+	LEADER = 0
+	CANDIDATE = 1
+	FOLLOWER = 2
 )
 
 // as each Raft peer becomes aware that successive log entries are
@@ -265,12 +265,11 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 		rf.Status = FOLLOWER
 	}
 
-	reply.Term = args.Term
-
 	//if rf log doesn't even have prevLogIndex, ie is too short,
 	//reply false and also send un updated NextIndex value
 	if args.PrevLogIndex > rf.LastIndex() {
 		reply.NextIndex = rf.LastIndex() + 1
+		reply.Term = args.Term
 		return
 	}
 
@@ -285,6 +284,7 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 				break
 			}
 		}
+		reply.Term = args.Term
 		return
 	}
 
@@ -410,12 +410,10 @@ func (rf *Raft) sendAppendEntriesToAll() {
 			if (i == rf.Me) {
 				continue
 			}
-
 			if (rf.MatchIndex[i] >= n){
 				ct++
 			}
 		}
-
 		if (2*ct > len(rf.Peers) && rf.Log[n].Term == rf.CurrentTerm) {
 			N = n
 			updated = true
@@ -449,21 +447,21 @@ func Make(Peers []*labrpc.ClientEnd, me int,
 	rf.VotedFor = -1
 	rf.Log = append(rf.Log, LogEntry{Term: 0})
 	rf.CurrentTerm = 0
-	rf.newCommit = make(chan bool,100)
-	rf.RecievedBeat = make(chan bool,100)
-	rf.GaveVote = make(chan bool,100)
-	rf.BecameLeader = make(chan bool,100)
+	rf.newCommit = make(chan bool,5)
+	rf.RecievedBeat = make(chan bool,5)
+	rf.GaveVote = make(chan bool,5)
+	rf.BecameLeader = make(chan bool,5)
 
 	// initialize from state persisted before a crash
 	rf.readPersist(persister.ReadRaftState())
 
+	//always listen for newly committed commands which can be applied!
 	go func() {
 		for {
 			select {
 			case <-rf.newCommit:
 				rf.Mu.Lock()
-			    CommitIndex := rf.CommitIndex
-				for i := rf.LastApplied+1; i <= CommitIndex; i++ {
+				for i := rf.LastApplied+1; i <= rf.CommitIndex; i++ {
 					msg := ApplyMsg{Index: i, Command: rf.Log[i].LogComd}
 					applyCh <- msg
 					rf.LastApplied = i
