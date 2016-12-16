@@ -42,7 +42,7 @@ type Raft struct {
 	VoteCount int
 
 	//channels for events
-	chanCommit chan bool
+	newCommit chan bool
 	RecievedBeat chan bool
 	GaveVote chan bool
 	BecameLeader chan bool
@@ -280,34 +280,34 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 	ourTerm := rf.Log[args.PrevLogIndex].Term
 	app := true
 	if args.PrevLogTerm != ourTerm {
-		for i := args.PrevLogIndex - 1 ; i >= 0; i-- {
-			if rf.Log[i].Term != ourTerm {
-				reply.NextIndex = i + 1
+		for i := range rf.Log {
+			if rf.Log[i].Term == ourTerm {
+				reply.NextIndex = i
 				break
 			}
 		}
 		return
 	}
 
-	if app {
+	if (app){
 		rf.Log = rf.Log[: args.PrevLogIndex+1]     //cut down our log
 		rf.Log = append(rf.Log, args.Entries...)   //append new entries from leader log to our log
 	}
 
+	if args.LeaderCommit > rf.CommitIndex {
+		rf.CommitIndex = Min(args.LeaderCommit, rf.LastIndex())
+		rf.newCommit <- true
+	}
 	reply.Success = true
 	reply.NextIndex = rf.LastIndex() + 1
-
-	//println(rf.Me,rf.LastIndex(),reply.NextIndex,rf.Log)
-	if args.LeaderCommit > rf.CommitIndex {
-		last := rf.LastIndex()
-		if args.LeaderCommit > last {
-			rf.CommitIndex = last
-		} else {
-			rf.CommitIndex = args.LeaderCommit
-		}
-		rf.chanCommit <- true
-	}
 	return
+}
+
+func Min(x, y int) int {
+    if x < y {
+        return x
+    }
+    return y
 }
 
 func (rf *Raft) sendAppendEntries(server int, args AppendEntriesArgs, reply *AppendEntriesReply) bool {
@@ -369,7 +369,7 @@ func (rf *Raft) requestVoteFromAll() {
 				if reply.VoteGranted {
 					rf.VoteCount++
 					if rf.Status == CANDIDATE && rf.VoteCount > len(rf.Peers)/2 {
-						//rf.Status = FOLLOWER
+						rf.Status = FOLLOWER
 						rf.BecameLeader <- true
 					}
 				}
@@ -425,7 +425,7 @@ func (rf *Raft) sendAppendEntriesToAll() {
 	}
 	if updated {
 		rf.CommitIndex = N
-		rf.chanCommit <- true		
+		rf.newCommit <- true		
 	}
 
 }
@@ -451,7 +451,7 @@ func Make(Peers []*labrpc.ClientEnd, me int,
 	rf.VotedFor = -1
 	rf.Log = append(rf.Log, LogEntry{Term: 0})
 	rf.CurrentTerm = 0
-	rf.chanCommit = make(chan bool,100)
+	rf.newCommit = make(chan bool,100)
 	rf.RecievedBeat = make(chan bool,100)
 	rf.GaveVote = make(chan bool,100)
 	rf.BecameLeader = make(chan bool,100)
@@ -462,7 +462,7 @@ func Make(Peers []*labrpc.ClientEnd, me int,
 	go func() {
 		for {
 			select {
-			case <-rf.chanCommit:
+			case <-rf.newCommit:
 				rf.Mu.Lock()
 			    CommitIndex := rf.CommitIndex
 				for i := rf.LastApplied+1; i <= CommitIndex; i++ {
