@@ -1,0 +1,563 @@
+Advaits-MacBook-Pro:raft2 advaitchauhan$ go test -run Election
+187ms
+Raft created:  0
+331ms
+Raft created:  1
+190ms
+Raft created:  2
+Test: initial election ...
+Follower timeout -> candidate:  1
+Candidate has emerged:  1
+Candidate: 1 term 0
+1 requests vote from 2
+2 recieved requestVote from 1
+2 Just voted for 1
+Candidate recieved majority:  1
+Server and Status before election end 1 2
+Leader chosen! 1
+Follower  2  recieved beat from  1
+1 requests vote from 0
+0 recieved requestVote from 1
+0 Just voted for 1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+  ... Passed
+232ms
+Raft created:  0
+191ms
+Raft created:  1
+484ms
+Raft created:  2
+Test: election after network failure ...
+This instance seems no longer required! -1
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 0
+2 requests vote from 1
+1 recieved requestVote from 2
+1 Just voted for 2
+Candidate recieved majority:  2
+Server and Status before election end 2 2
+Leader chosen! 2
+Follower  1  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 1
+2 requests vote from 1
+1 recieved requestVote from 2
+1 Just voted for 2
+Candidate recieved majority:  2
+Server and Status before election end 2 2
+Leader chosen! 2
+Follower  1  recieved beat from  2
+2 requests vote from 0
+0 recieved requestVote from 2
+0 Just voted for 2
+Follower  0  recieved beat from  2
+2 requests vote from 0
+0 recieved requestVote from 2
+0 Just voted for 2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Passed initially
+Test leader disconnected
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  1
+Candidate has emerged:  1
+Candidate: 1 term 1
+1 requests vote from 2
+1 requests vote from 0
+0 recieved requestVote from 1
+0 Just voted for 1
+Candidate recieved majority:  1
+Server and Status before election end 1 2
+Leader chosen! 1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  1
+Passed after disconnect
+Test old leader rejoins
+OD: Leader 2 (term) 1 recieved heartbeat reply from 0 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  2  recieved beat from  1
+Follower  0  recieved beat from  1
+Passed after old leader rejoins
+Test No Quorum
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 2 recieved heartbeat reply from 1 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 2 recieved heartbeat reply from 1 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  0
+Candidate has emerged:  0
+Candidate: 0 term 2
+0 requests vote from 2
+0 requests vote from 1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 2
+2 requests vote from 1
+2 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 1 (term) 2 recieved heartbeat reply from 2 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 3 recieved heartbeat reply from 0 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 3 recieved heartbeat reply from 0 with term 0
+OD: Leader 1 (term) 2 recieved heartbeat reply from 2 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 0 1
+Candidate has emerged:  0
+Candidate: 0 term 3
+0 requests vote from 2
+Follower timeout -> candidate:  1
+Candidate has emerged:  1
+Candidate: 1 term 2
+1 requests vote from 2
+0 requests vote from 1
+1 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 2 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 3 recieved heartbeat reply from 0 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 0 1
+Candidate has emerged:  0
+Candidate: 0 term 4
+0 requests vote from 2
+Server and Status before election end 1 1
+Candidate has emerged:  1
+Candidate: 1 term 3
+1 requests vote from 2
+0 requests vote from 1
+1 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 3 recieved heartbeat reply from 1 with term 0
+Server and Status before election end 0 1
+Candidate has emerged:  0
+Candidate: 0 term 5
+0 requests vote from 2
+0 requests vote from 1
+Server and Status before election end 0 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 1 1
+Candidate has emerged:  1
+Candidate: 1 term 4
+1 requests vote from 2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+1 requests vote from 0
+Follower timeout -> candidate:  0
+Candidate has emerged:  0
+Candidate: 0 term 6
+0 requests vote from 2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 3
+2 requests vote from 1
+0 requests vote from 1
+2 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 1 1
+Candidate has emerged:  1
+Candidate: 1 term 5
+1 requests vote from 2
+1 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 1 0
+Server and Status before election end 2 1
+Candidate has emerged:  2
+Candidate: 2 term 4
+2 requests vote from 1
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+2 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 0 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Passed after no quorum test
+Test for quorum arises
+Server and Status before election end 2 0
+OD: Leader 2 (term) 5 recieved heartbeat reply from 0 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 5 recieved heartbeat reply from 0 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  1
+Candidate has emerged:  1
+Candidate: 1 term 6
+1 requests vote from 2
+1 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 5
+2 requests vote from 1
+2 requests vote from 0
+0 recieved requestVote from 2
+0 w/ term  7 de clined voted for 2 because of its low term 6
+Server and Status before election end 2 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 1 1
+Candidate has emerged:  1
+Candidate: 1 term 7
+1 requests vote from 2
+1 requests vote from 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 6
+2 requests vote from 1
+2 requests vote from 0
+0 recieved requestVote from 2
+0 Just voted for 2
+Candidate recieved majority:  2
+Server and Status before election end 2 2
+Leader chosen! 2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+OD: Leader 1 (term) 8 recieved heartbeat reply from 2 with term 0
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 1 (term) 8 recieved heartbeat reply from 2 with term 0
+Follower  1  recieved beat from  2
+OD: Leader 2 (term) 7 recieved heartbeat reply from 1 with term 0
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Server and Status before election end 1 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 7
+2 requests vote from 1
+2 requests vote from 0
+Follower  1  recieved beat from  2
+OD: Leader 2 (term) 8 recieved heartbeat reply from 1 with term 0
+0 recieved requestVote from 2
+0 Just voted for 2
+Follower  0  recieved beat from  2
+Candidate recieved majority:  2
+Server and Status before election end 2 2
+Leader chosen! 2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+OD: Leader 1 (term) 8 recieved heartbeat reply from 0 with term 0
+OD: Leader 1 (term) 8 recieved heartbeat reply from 0 with term 0
+Follower  0  recieved beat from  2
+Passed when quorum arises
+OD: Leader 1 (term) 8 recieved heartbeat reply from 2 with term 0
+OD: Leader 1 (term) 8 recieved heartbeat reply from 2 with term 0
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 8 recieved heartbeat reply from 0 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 1 (term) 8 recieved heartbeat reply from 2 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 8
+2 requests vote from 1
+1 recieved requestVote from 2
+1 Just voted for 2
+Candidate recieved majority:  2
+Server and Status before election end 2 2
+Leader chosen! 2
+Follower  1  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+2 requests vote from 0
+0 recieved requestVote from 2
+0 Just voted for 2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 2 (term) 9 recieved heartbeat reply from 1 with term 0
+OD: Leader 2 (term) 9 recieved heartbeat reply from 1 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+OD: Leader 1 (term) 9 recieved heartbeat reply from 2 with term 0
+OD: Leader 2 (term) 9 recieved heartbeat reply from 1 with term 0
+OD: Leader 1 (term) 9 recieved heartbeat reply from 2 with term 0
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower timeout -> candidate:  2
+Candidate has emerged:  2
+Candidate: 2 term 9
+2 requests vote from 1
+OD: Leader 2 (term) 10 recieved heartbeat reply from 1 with term 0
+1 recieved requestVote from 2
+1 Just voted for 2
+Candidate recieved majority:  2
+Server and Status before election end 2 2
+Leader chosen! 2
+Follower  1  recieved beat from  2
+2 requests vote from 0
+0 recieved requestVote from 2
+0 Just voted for 2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+Follower  0  recieved beat from  2
+Follower  1  recieved beat from  2
+  ... Passed
+PASS
+ok  	raft2	8.171s
+Advaits-MacBook-Pro:raft2 advaitchauhan$ 
