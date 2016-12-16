@@ -278,22 +278,20 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 	//whose term matches prevLogTerm. We also send the first index
 	//of the erroneous term as the nextIndex
 	ourTerm := rf.Log[args.PrevLogIndex].Term
-	app := true
 	if args.PrevLogTerm != ourTerm {
-		for i := range rf.Log {
-			if rf.Log[i].Term == ourTerm {
-				reply.NextIndex = i
+		for i := args.PrevLogIndex - 1 ; i >= 0; i-- {
+			if rf.Log[i].Term != ourTerm {
+				reply.NextIndex = i + 1
 				break
 			}
 		}
 		return
 	}
 
-	if (app){
-		rf.Log = rf.Log[: args.PrevLogIndex+1]     //cut down our log
-		rf.Log = append(rf.Log, args.Entries...)   //append new entries from leader log to our log
-	}
+	rf.Log = rf.Log[: args.PrevLogIndex+1]     //cut down our log
+	rf.Log = append(rf.Log, args.Entries...)   //append new entries from leader log to our log
 
+	//update the commit index if need be
 	if args.LeaderCommit > rf.CommitIndex {
 		rf.CommitIndex = Min(args.LeaderCommit, rf.LastIndex())
 		rf.newCommit <- true
